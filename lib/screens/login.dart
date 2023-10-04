@@ -70,7 +70,7 @@ class SignInScreenState extends State<SignInScreen> {
                         height: 10.h,
                       ),
                       Text(
-                        StringResources.GET_BACK_ON_THE_WHEEL,
+                        StringResources.SEE_YOUR_FLEET,
                         style: TextStyle(
                           color: AppColors.darkBlue,
                           fontSize: 18.sp,
