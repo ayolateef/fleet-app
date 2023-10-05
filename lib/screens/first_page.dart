@@ -10,6 +10,8 @@ import 'package:go_fleet/screens/utilis/config/app_startup.dart';
 import 'package:go_fleet/screens/utilis/navigation/navigation_service.dart';
 import 'package:go_fleet/screens/utilis/string.dart';
 
+import 'auth/route/routes.dart';
+
 class FirstPage extends StatefulWidget {
   const FirstPage({Key? key}) : super(key: key);
 
@@ -56,10 +58,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
             AppButton(
               onPressed: () {
-                getIt<NavigationService>().toWithParameters(
-                  routeName: RootRoutes.webView,
-                  args: {"title": "Fleet", "url": "https://fleet.gocaby.com"},
-                );
+                getIt<NavigationService>().to(routeName: AuthRoutes.signUp);
               },
               radius: 56.r,
               text: StringResources.BECOME_A_FLEET_MANAGER,

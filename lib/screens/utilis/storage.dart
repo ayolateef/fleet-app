@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'config/app_configs.dart';
 import 'models/base.dart';
 
 class LocalStorageUtils<M extends BaseModel> {
@@ -55,5 +57,41 @@ class LocalStorageUtils<M extends BaseModel> {
       return data;
     }
     return null;
+  }
+}
+
+class UserTokenManager {
+  static Future<String?> getAccessToken() async {
+    var storage = const FlutterSecureStorage();
+    var token = await storage.read(key: AppConstants.userToken);
+    return token;
+  }
+
+  static Future<void> deleteAccessToken() async {
+    var storage = const FlutterSecureStorage();
+    await storage.delete(key: AppConstants.userToken);
+  }
+
+  static Future<String> insertAccessToken(String token) async {
+    var storage = const FlutterSecureStorage();
+    await storage.write(key: AppConstants.userToken, value: token);
+    return token;
+  }
+
+  static Future<String?> getRefreshToken() async {
+    var storage = const FlutterSecureStorage();
+    var token = await storage.read(key: AppConstants.refreshToken);
+    return token;
+  }
+
+  static Future<void> deleteRefreshToken() async {
+    var storage = const FlutterSecureStorage();
+    await storage.delete(key: AppConstants.refreshToken);
+  }
+
+  static Future<String> insertRefreshToken(String token) async {
+    var storage = const FlutterSecureStorage();
+    await storage.write(key: AppConstants.refreshToken, value: token);
+    return token;
   }
 }

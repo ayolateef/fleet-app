@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_fleet/screens/auth/route/routes.dart';
+import 'package:go_fleet/screens/auth/signup/root.dart';
+import 'package:go_fleet/screens/home/home.dart';
 
+import '../../auth/sign_in/widget/otp_page.dart';
 import '../../first_page.dart';
-import '../../login.dart';
+import '../../auth/sign_in/login.dart';
+import '../../home/routes/routes.dart';
+import '../../home/widget/vehicle_infomation.dart';
 import '../../route/route.dart';
 import '../../splash_screen.dart';
 import '../caby_webview.dart';
@@ -31,6 +37,30 @@ var routes = (RouteSettings settings) {
     case RootRoutes.signIn:
       return MaterialPageRoute(
         builder: (context) => const SignInScreen(),
+      );
+    case AuthRoutes.otp:
+      Map? args = settings.arguments as Map;
+      return MaterialPageRoute(
+        builder: (context) => OtpPage(
+          phoneNumber: args['phone'],
+          linkFrom: args['type'],
+          email: args['email'],
+        ),
+      );
+    case AuthRoutes.signUp:
+      return MaterialPageRoute(
+        builder: (context) => const SignUpScreen(),
+      );
+    case RootRoutes.home:
+      return MaterialPageRoute(
+        builder: (context) => const Vehicle(),
+      );
+    case ProfileRoutes.vehicleInformation:
+      Map? args = settings.arguments as Map;
+      return MaterialPageRoute(
+        builder: (context) => VehicleInfo(
+          plateNumber: args['plateNumber'],
+        ),
       );
   }
   return null;

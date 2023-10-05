@@ -1,5 +1,10 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
+
+import '../../auth/di.dart';
+import '../../auth/sign_in/cubit/sign_in_cubit.dart';
+import '../../home/di.dart';
 import '../models/user.dart';
 import '../navigation/di.dart';
 import '../storage.dart';
@@ -14,7 +19,7 @@ GetIt getIt = GetIt.instance;
 class AppStartUp {
   Future<void> setUp() async {
     getIt.allowReassignment = true;
-    //await initializedFirebase();
+    // await initializedFirebase();
     await registerServices(getIt);
     loadStartUpConfig();
     //await firebasePushNotification();
@@ -27,10 +32,10 @@ class AppStartUp {
 
   Future<void> registerServices(ioc) async {
     setupSharedServices(ioc);
-    // setupAuthServices(ioc);
+    setupAuthServices(ioc);
     // setupWalletServices(ioc);
-    // setupHomeServices(ioc);
-    // setupProfileService(ioc);
+    //setupHomeServices(ioc);
+    setupProfileService(ioc);
     // earningService(ioc);
     // addressService(ioc);
     // setupLogisticsServices(ioc);
@@ -46,13 +51,13 @@ class AppStartUp {
       getIt.registerSingleton<User>(user);
 
       //! Note: this has to be called after SignInCubit is registered
-      //getIt.get<SignInCubit>().getProfile(isLogin: true);
+      getIt.get<SignInCubit>().getProfile(isLogin: true);
     }
   }
 
-// Future<void> initializedFirebase() async {
-//   await Firebase.initializeApp();
-// }
+  // Future<void> initializedFirebase() async {
+  //   await Firebase.initializeApp();
+  // }
 //
 // Future<void> firebasePushNotification() async {
 //   FirebaseNotificationManager notificationManager =

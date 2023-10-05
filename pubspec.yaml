@@ -38,8 +38,20 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
-
+  dio: ^4.0.6
+  flutter_secure_storage: ^5.0.2
+  enum_to_string: ^2.0.1
+  pinput: ^2.2.21
+  google_fonts: ^4.0.3
+  image_picker: ^0.8.5+3
+  cached_network_image: ^3.2.0
+  shimmer: ^2.0.0
+  image_cropper: ^1.4.1
   cupertino_icons: ^1.0.2
+  file_picker: ^4.6.0
+  date_time_picker: ^2.1.0
+  http_parser: ^4.0.2
+  firebase_core: ^2.4.1
 
 
 dev_dependencies:
@@ -62,6 +74,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/json/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
